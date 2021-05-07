@@ -82,6 +82,9 @@ bindsym $mod+b exec qutebrowser
 # Dmenu
 bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#2B2928' -nf '#F6F6F6' -sb '#FBB86C' -sf '#2B2928'
 
+# focus follows mouse
+focus_follows_mouse no
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
