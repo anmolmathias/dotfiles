@@ -48,7 +48,7 @@ exec_always --no-startup-id /usr/bin/dunst
 
 # Redshift
 exec --no-startup-id redshift -l 29.14565:78.40956
-bindsym $mod+shift+w exec pkill -USR1 redshift
+bindsym $mod+shift+w exec --no-startup-id pkill -USR1 redshift
 
 # use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -58,8 +58,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -71,13 +71,13 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Physlock
-bindsym $mod+shift+x exec physlock -p "leelaArch Build 2 | Kernel v5.4.114-1-lts54"
+bindsym $mod+shift+x exec --no-startup-id physlock -p "leelaArch Build 2 | Kernel v5.4.114-1-lts54"
 
 # Terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return --no-startup-id exec urxvt
 
 # Web browser
-bindsym $mod+b exec qutebrowser
+bindsym $mod+b exec --no-startup-id qutebrowser
 
 # Dmenu
 bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#2B2928' -nf '#F6F6F6' -sb '#FBB86C' -sf '#2B2928'
@@ -201,6 +201,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 and log out of X session
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 
