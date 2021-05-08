@@ -74,7 +74,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+shift+x exec --no-startup-id physlock -p "leelaArch Build 2 | Kernel v5.4.114-1-lts54"
 
 # Terminal
-bindsym $mod+Return --no-startup-id exec urxvt
+bindsym $mod+Return exec --no-startup-id urxvt
 
 # Web browser
 bindsym $mod+b exec --no-startup-id qutebrowser
