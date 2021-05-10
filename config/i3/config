@@ -19,24 +19,24 @@ bar {
 	tray_output none
 	font pango:Iosevka Extended Bold 9
 	colors {
-		background #2B2928
+		background #181818
 		separator #F6F6F6
 		statusline #FBB86C
-		active_workspace #FBB86C #2B2928 #F6F6F6
-		focused_workspace #FBB86C #FBB86C #2B2928
-		inactive_workspace #2B2928 #2B2928 #F6F6F6
-		urgent_workspace #E56A54 #E56A54 #2B2928
+		active_workspace #FBB86C #181818 #F6F6F6
+		focused_workspace #FBB86C #FBB86C #181818
+		inactive_workspace #181818 #181818 #F6F6F6
+		urgent_workspace #E56A54 #E56A54 #181818
 	}
 }
 
 # window decorations    border  backgr  text    indic.  chl_bor
-client.focused          #2B2928 #FBB86C #2B2928 #2B2928 #2B2928 
-client.focused_inactive #2B2928 #2B2928 #FBB86C #2B2928 #2B2928 
-client.unfocused        #2B2928 #2B2928 #F6F6F6 #2B2928 #2B2928 
-client.urgent           #2B2928 #2B2928 #FBB86C #2B2928 #2B2928 
-client.placeholder      #2B2928 #2B2928 #FBB86C #2B2928 #2B2928 
+client.focused          #181818 #FBB86C #181818 #181818 #181818 
+client.focused_inactive #181818 #181818 #FBB86C #181818 #181818 
+client.unfocused        #181818 #181818 #F6F6F6 #181818 #181818 
+client.urgent           #181818 #181818 #FBB86C #181818 #181818 
+client.placeholder      #181818 #181818 #FBB86C #181818 #181818 
 
-client.background       #2B2928
+client.background       #181818
 
 
 
@@ -49,6 +49,10 @@ exec_always --no-startup-id /usr/bin/dunst
 # Redshift
 exec --no-startup-id redshift -l 29.14565:78.40956
 bindsym $mod+shift+w exec --no-startup-id pkill -USR1 redshift
+
+# Maim
+bindsym Print exec --no-startup-id maim -u -m 10 ~/Pictures/Screenshots/$(date +%s).png
+bindsym --release shift+Print exec --no-startup-id maim -s -u -m 10 ~/Pictures/Screenshots/$(date +%s).png 
 
 # use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -80,7 +84,7 @@ bindsym $mod+Return exec --no-startup-id urxvt
 bindsym $mod+b exec --no-startup-id qutebrowser
 
 # Dmenu
-bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#2B2928' -nf '#F6F6F6' -sb '#FBB86C' -sf '#2B2928'
+bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'
 
 # focus follows mouse
 focus_follows_mouse no
