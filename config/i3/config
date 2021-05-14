@@ -88,7 +88,10 @@ bindsym $mod+b exec --no-startup-id qutebrowser
 #bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'
 
 # j4-Dmenu
-bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'" --term="urxvt"
+bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'" --term="urxvt"
+
+# Bitwarden-dmenu
+bindsym $mod+Shift+b exec bitwarden-dmenu --dmenu-args="-i -nb #181818 -nf #F6F6F6 -sb #FBB86C -sf #181818" --clear-clipboard 30 --session-timeout 57600 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
 
 # focus follows mouse
 focus_follows_mouse no
