@@ -29,6 +29,10 @@ bar {
 	}
 }
 
+# NetworkManager applet
+exec --no-startup-id nm-applet
+
+
 # window decorations    border  backgr  text    indic.  chl_bor
 client.focused          #181818 #FBB86C #181818 #181818 #181818 
 client.focused_inactive #181818 #181818 #FBB86C #181818 #181818 
@@ -39,9 +43,6 @@ client.placeholder      #181818 #181818 #FBB86C #181818 #181818
 client.background       #181818
 
 
-
-# NetworkManager applet
-exec --no-startup-id nm-applet
 
 # Dunst
 exec_always --no-startup-id /usr/bin/dunst
@@ -84,7 +85,10 @@ bindsym $mod+Return exec --no-startup-id urxvt
 bindsym $mod+b exec --no-startup-id qutebrowser
 
 # Dmenu
-bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'
+#bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'
+
+# j4-Dmenu
+bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'" --term="urxvt"
 
 # focus follows mouse
 focus_follows_mouse no
