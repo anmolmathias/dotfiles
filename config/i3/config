@@ -6,11 +6,60 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
+###########
+# general #
+###########
+
 # mod key
 set $mod Mod4
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace 
+bindsym $mod+Shift+r restart
+
+# exit i3 and log out of X session
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+#############
+# autostart #
+#############
+
+# NetworkManager applet
+exec --no-startup-id nm-applet
+
+# Dunst
+exec --no-startup-id /usr/bin/dunst
+
+# Redshift
+exec --no-startup-id redshift -l 29.14565:78.40956
+
+##########
+# scheme #
+##########
+
 # font
 font pango:Iosevka Extended, DejaVu Sans Mono, Noto Sans Mono Bold 9
+
+# window decorations    border  backgr  text    indic.  chl_bor
+client.focused          #181818 #FBB86C #181818 #181818 #181818 
+client.focused_inactive #181818 #181818 #FBB86C #181818 #181818 
+client.unfocused        #181818 #181818 #F6F6F6 #181818 #181818 
+client.urgent           #181818 #181818 #FBB86C #181818 #181818 
+client.placeholder      #181818 #181818 #FBB86C #181818 #181818 
+client.background       #181818
+
+# title bars
+for_window [class="^.*"] title_format " %title" border pixel 2
+
+# gaps
+gaps inner 5
+
+#########
+# i3bar #
+#########
 
 # start i3bar to display a workspace bar
 bar {
@@ -29,31 +78,38 @@ bar {
 	}
 }
 
-# NetworkManager applet
-exec --no-startup-id nm-applet
+########################
+# application bindings #
+########################
 
+# Physlock
+bindsym $mod+shift+x exec --no-startup-id physlock -p "leelaArch Build 2 | Kernel v5.4.114-1-lts54"
 
-# window decorations    border  backgr  text    indic.  chl_bor
-client.focused          #181818 #FBB86C #181818 #181818 #181818 
-client.focused_inactive #181818 #181818 #FBB86C #181818 #181818 
-client.unfocused        #181818 #181818 #F6F6F6 #181818 #181818 
-client.urgent           #181818 #181818 #FBB86C #181818 #181818 
-client.placeholder      #181818 #181818 #FBB86C #181818 #181818 
+# Terminal
+bindsym $mod+Return exec --no-startup-id urxvt
 
-client.background       #181818
-
-
-
-# Dunst
-exec_always --no-startup-id /usr/bin/dunst
+# Web browser
+bindsym $mod+b exec --no-startup-id qutebrowser
 
 # Redshift
-exec --no-startup-id redshift -l 29.14565:78.40956
 bindsym $mod+shift+w exec --no-startup-id pkill -USR1 redshift
+
+# Dmenu
+#bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'
+
+# j4-Dmenu
+bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'" --term="urxvt"
+
+# Bitwarden-dmenu
+bindsym $mod+Shift+b exec bitwarden-dmenu --dmenu-pswd-args="-nb #181818 -nf #F6F6F6 -sb #FBB86C -sf #181818" --dmenu-args="-i -nb #181818 -nf #F6F6F6 -sb #FBB86C -sf #181818" --clear-clipboard 30 --session-timeout 57600 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
 
 # Maim
 bindsym Print exec --no-startup-id maim -u -m 10 ~/Pictures/Screenshots/$(date +%s).png
 bindsym --release shift+Print exec --no-startup-id maim -s -u -m 10 ~/Pictures/Screenshots/$(date +%s).png 
+
+###############
+# wm bindings #
+###############
 
 # use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -75,35 +131,14 @@ bindsym $mod+Shift+minus move scratchpad
 # show the first scratchpad window
 bindsym $mod+minus scratchpad show
 
-# Physlock
-bindsym $mod+shift+x exec --no-startup-id physlock -p "leelaArch Build 2 | Kernel v5.4.114-1-lts54"
-
-# Terminal
-bindsym $mod+Return exec --no-startup-id urxvt
-
-# Web browser
-bindsym $mod+b exec --no-startup-id qutebrowser
-
-# Dmenu
-#bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'
-
-# j4-Dmenu
-bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'" --term="urxvt"
-
-# Bitwarden-dmenu
-bindsym $mod+Shift+b exec bitwarden-dmenu --dmenu-pswd-args="-nb #181818 -nf #F6F6F6 -sb #FBB86C -sf #181818" --dmenu-args="-i -nb #181818 -nf #F6F6F6 -sb #FBB86C -sf #181818" --clear-clipboard 30 --session-timeout 57600 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
-
-# focus follows mouse
-focus_follows_mouse no
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # split in horizontal orientation
-bindsym $mod+z split h
+bindsym $mod+z split horizontal; exec notify-send "SPLIT HORIZONTALLY"
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split vertical; exec notify-send "SPLIT VERTICALLY"
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -116,11 +151,29 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+##################
+# focus bindings #
+##################
+
 # change focus between tiling / floating windows
 bindsym $mod+d focus mode_toggle
 
-# focus the parent container
+# focus parent container
 bindsym $mod+a focus parent
+
+# focus child container
+bindsym $mod+c focus child
+
+# focus follows mouse
+focus_follows_mouse no
+
+# disable focus steal for qutebrowser
+no_focus [class="qutebrowser"]
+for_window [class="qutebrowser"] layout tabbed
+
+##############
+# workspaces #
+############## 
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
@@ -180,6 +233,17 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# workspace back and forth
+workspace_auto_back_and_forth yes
+
+# workspace next and back
+bindsym $mod+n workspace next_on_output
+bindsym $mod+Shift+n workspace prev_on_output
+
+##########
+# resize #
+##########
+
 # resize window
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
@@ -198,20 +262,4 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# title bars
-for_window [class="^.*"] border pixel 2
-
-# gaps
-gaps inner 5
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-# restart i3 inplace 
-bindsym $mod+Shift+r restart
-
-# exit i3 and log out of X session
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
 
