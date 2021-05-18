@@ -41,7 +41,7 @@ exec --no-startup-id redshift -l 29.14565:78.40956
 ##########
 
 # font
-font pango:Iosevka Extended, DejaVu Sans Mono, Noto Sans Mono Bold 9
+font pango:Inter, DejaVu Sans Mono, Noto Sans Mono Bold, Sarasa Gothic 9
 
 # window decorations    border  backgr  text    indic.  chl_bor
 client.focused          #181818 #FBB86C #181818 #181818 #181818 
@@ -66,7 +66,7 @@ bar {
         status_command i3status
 	position top
 	tray_output none
-	font pango:Iosevka Extended Bold 9
+	font pango:Inter Bold 9
 	colors {
 		background #181818
 		separator #F6F6F6
@@ -98,7 +98,7 @@ bindsym $mod+shift+w exec --no-startup-id pkill -USR1 redshift
 #bindsym $mod+space exec --no-startup-id dmenu_run -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'
 
 # j4-Dmenu
-bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'Iosevka Extended:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'" --term="urxvt"
+bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'Inter:pixelsize=14' -nb '#181818' -nf '#F6F6F6' -sb '#FBB86C' -sf '#181818'" --term="urxvt"
 
 # Bitwarden-dmenu
 bindsym $mod+Shift+b exec bitwarden-dmenu --dmenu-pswd-args="-nb #181818 -nf #F6F6F6 -sb #FBB86C -sf #181818" --dmenu-args="-i -nb #181818 -nf #F6F6F6 -sb #FBB86C -sf #181818" --clear-clipboard 30 --session-timeout 57600 --sync-vault-after 3600 --on-error 'xargs notify-send --urgency=low'
