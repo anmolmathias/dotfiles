@@ -45,10 +45,10 @@ font pango:Inter, DejaVu Sans Mono, Noto Sans Mono Bold, Sarasa Gothic 9
 
 # window decorations    border  backgr  text    indic.  chl_bor
 client.focused          #181818 #FBB86C #181818 #181818 #181818 
-client.focused_inactive #181818 #181818 #FBB86C #181818 #181818 
-client.unfocused        #181818 #181818 #F6F6F6 #181818 #181818 
+client.focused_inactive #181818 #181818 #FBB86C #181818 #707880 
+client.unfocused        #181818 #181818 #F6F6F6 #181818 #707880 
 client.urgent           #181818 #181818 #FBB86C #181818 #181818 
-client.placeholder      #181818 #181818 #FBB86C #181818 #181818 
+client.placeholder      #181818 #181818 #FBB86C #181818 #fbb86c 
 client.background       #181818
 
 # title bars
