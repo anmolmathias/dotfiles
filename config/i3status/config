@@ -7,9 +7,9 @@
 
 general {
         colors = true
-	color_good = "#6CFBB8"
-	color_degraded = "#F7FB6C"
-	color_bad = "#FB716C"
+	color_good = "#98971A"
+	color_degraded = "#D79921"
+	color_bad = "#CC241D"
         interval = 1
 }
 
@@ -18,7 +18,7 @@ order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
 #order += "disk /"
-#order += "load"
+order += "load"
 order += "memory"
 order += "volume master"
 order += "tztime local"
@@ -48,7 +48,7 @@ disk "/" {
 }
 
 load {
-        format = "%1min"
+        format = " CPU %5min "
 }
 
 memory {
