@@ -1,29 +1,29 @@
-# Logo key. Use Mod1 for Alt.
+# Logo key. Mod1 for Alt.
 set $mod Mod4
 
-# Home row direction keys, like vim
+# Home row direction keys, vim-like
 set $left h
 set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
+# Terminal emulator
 set $term kitty
 
-# Your preferred application launcher
+# Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu $term --class=launcher -e env TERMINAL_COMMAND='kitty -e' swaymsg-launcher-desktop
 
 #
-# autostart
+# Autostart
 #
 
 # NetworkManager applet
 exec nm-applet
 
-# Dunst
-exec /usr/bin/dunst
+# Mako
+exec mako
 
 # wlsunset
 exec wlsunset -l 29.1 -L 78.4
@@ -32,7 +32,7 @@ exec wlsunset -l 29.1 -L 78.4
 #
 
 # Default wallpaper
-output * bg /home/nml/Pictures/Wallpaper/buildings.png fill
+output * bg /home/nml/Pictures/Wallpaper/buildings.png fit
 
 #
 # Example configuration:
@@ -43,18 +43,19 @@ output * bg /home/nml/Pictures/Wallpaper/buildings.png fill
 
 ### Idle configuration
 #
-# Example configuration:
-#
- exec swayidle \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -c 000000'
+
+exec swayidle \
+  timeout 300 'swaylock' \
+  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
+#
 
 input type:touchpad {
     dwt enabled
@@ -73,6 +74,8 @@ input type:keyboard {
 
 ### Key bindings
 #
+
+#
 # Basics:
 #
 
@@ -83,7 +86,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # Lock screen
-bindsym $mod+Escape exec swaylock -f -c 000000
+bindsym $mod+Escape exec swaylock
 
 # Start your launcher
 bindsym $mod+space exec $menu
@@ -177,12 +180,11 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 # Note: workspaces can have any name you want, not just numbers.
-# We just use 1-10 as the default.
 
-# workspace back and forth
+# Workspace back and forth
 workspace_auto_back_and_forth yes
 
-# workspace next and back
+# Workspace next and back
 bindsym $mod+n workspace next_on_output
 bindsym $mod+Shift+n workspace prev_on_output
 
@@ -213,10 +215,10 @@ bindsym $mod+d focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
 
-# focus follows mouse
+# Focus follows mouse
 focus_follows_mouse no
 
-# disable focus steal for qutebrowser
+# Disable focus steal for qutebrowser
 no_focus [app_id="qutebrowser"]
 for_window [app_id="qutebrowser"] layout tabbed
 
@@ -270,8 +272,15 @@ bindsym $mod+b exec --no-startup-id qutebrowser
 # Sway-launcher-desktop
 for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 8 
 
+# QtPass
+for_window [app_id="qtpass"] floating enable, sticky enable, resize set 50 ppt 50 ppt, border pixel 3
+bindsym $mod+p exec qtpass
+
+# wlsunset
+bindsym $mod+Shift+w exec wlsunset-toggle
+
 #
-# scheme
+# Scheme
 #
 
 set $bg #282828
@@ -285,10 +294,10 @@ set $gray #a89984
 set $bghard #1d2021
 set $white #ebdbb2
 
-# font
+# Font
 font pango:Inter, DejaVu Sans Mono, Noto Sans Mono Bold, Sarasa Gothic 9
 
-# window decorations    border  backgr  text    indic.  chl_bor
+# Window decorations    border  backgr  text    indic.  chl_bor
 client.focused          $yellow $yellow $bghard $purple $yellow
 client.focused_inactive $bghard $bghard $yellow $purple $bghard
 client.unfocused        $bghard $bghard $yellow $purple $bghard
