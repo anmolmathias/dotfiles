@@ -1,9 +1,9 @@
-# aachukay's dotfiles
+# dotfiles
 
 distro-agnostic configurations for production tools on GNU/Linux, compatible for Wayland Arch
 
 ### Dependencies
-
+```````
 **bash** — Shell.
 
 **kitty** — Terminal emulator.
