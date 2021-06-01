@@ -1,6 +1,9 @@
 # dotfiles
 
-distro-agnostic configurations for production tools on GNU/Linux, compatible for Wayland Arch
+distro-agnostic configurations for production tools on GNU/Linux, compatible for a Wayland-based installation.
+
+Current color scheme is Gruvbox Light Medium and primary fonts being Inter and Iosevka. 
+Undergoing transition from xorg to wayland.
 
 ## Dependencies
 - **bash** — Shell.
@@ -14,9 +17,7 @@ distro-agnostic configurations for production tools on GNU/Linux, compatible for
 - **swaymsg-launcher-desktop** — Application launcher.
 - **mako** - Notification daemon.
 - **ranger** - File manager.
-- **imv** - Image viewer.
 - **zathura** - PDF/EPUB/CBZ viewer.
 - **newsboat** - RSS reader.
 - **grim+slurp** - Screenshot tools.
-- **weechat** - IRC client.
 - **wlsunset** - Gamma adjustments for the wayland compositor.
