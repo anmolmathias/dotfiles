@@ -1,9 +1,10 @@
 # dotfiles
 
-distro-agnostic configurations for production tools on GNU/Linux, compatible for a Wayland-based installation.
+Distro-agnostic configurations for production tools on GNU/Linux, compatible for a wayland-based installation.
 
-Current color scheme is Gruvbox Light Medium and primary fonts being Inter and Iosevka. 
-Undergoing transition from xorg to wayland.
+<img alt="Desktop screenshot" src="resources/desktop.png">
+
+Color scheme adapted from [Gruvbox](https://github.com/morhetz/gruvbox) with [Inter](https://rsms.me/inter/) and [Iosevka](https://typeof.net/Iosevka/) being UI and monospace fonts respectively. 
 
 ## Dependencies
 - **bash** — Shell.
