@@ -38,3 +38,5 @@ set recolor-lightcolor          "#fbf1c7" # bg
 set recolor-darkcolor           "#3c3836" # fg
 set recolor                     "true"
 # set recolor-keephue             true      # keep original color
+
+set guioptions none
