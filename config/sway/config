@@ -13,7 +13,7 @@ set $term kitty
 # Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu $term --class=launcher -e env TERMINAL_COMMAND='kitty -e' swaymsg-launcher-desktop
+set $menu wofi --show=drun --lines=5 --prompt=""
 
 #
 # Autostart
@@ -28,11 +28,16 @@ exec mako
 # wlsunset
 exec wlsunset -l 29.1 -L 78.4
 
+# Clipman
+set $clipboard "~/.local/share/clipman.json"
+exec wl-paste -t text --watch clipman store
+exec wl-paste -p -t text --watch clipman store -P --max-items=60 --histpath="~/.local/share/clipman-primary.json"
+
 ### Output configuration
 #
 
 # Default wallpaper
-output * bg /home/nml/Pictures/Wallpaper/buildings.png fit
+output * bg /home/nml/Pictures/Wallpaper/totoro2.png fit
 
 #
 # Example configuration:
@@ -88,7 +93,10 @@ bindsym $mod+Shift+q kill
 # Lock screen
 bindsym $mod+Escape exec swaylock
 
-# Start your launcher
+# Clipman queue history
+bindsym $mod+y exec clipman pick --tool wofi -T'--prompt="queue history" -i'
+
+# Start launcher
 bindsym $mod+space exec $menu
 
 # Capture current screen
@@ -218,10 +226,6 @@ bindsym $mod+a focus parent
 # Focus follows mouse
 focus_follows_mouse no
 
-# Disable focus steal for qutebrowser
-no_focus [app_id="qutebrowser"]
-for_window [app_id="qutebrowser"] layout tabbed
-
 #
 # Scratchpad:
 #
@@ -241,8 +245,6 @@ bindsym $mod+minus scratchpad show
 #
 
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
     bindsym $left resize shrink width 10px
@@ -268,16 +270,11 @@ bindsym $mod+r mode "resize"
 
 # Web browser
 bindsym $mod+b exec --no-startup-id qutebrowser
-
-# Sway-launcher-desktop
-for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 8 
-
-# QtPass
-for_window [app_id="qtpass"] floating enable, sticky enable, resize set 50 ppt 50 ppt, border pixel 3
-bindsym $mod+p exec qtpass
+no_focus [app_id="qutebrowser"]
+for_window [app_id="qutebrowser"] layout tabbed
 
 # wlsunset
-bindsym $mod+Shift+w exec wlsunset-toggle
+bindsym $mod+Shift+w exec wlsunset-toggle.sh
 
 #
 # Scheme
