@@ -1,7 +1,8 @@
 * {
     font: "Inter";
     font-size: 15px;
-    outline-style: solid;
+    outline: none;
+    border: none;
     box-shadow: none;
     caret-color: #a89983;
 }
@@ -15,39 +16,33 @@ window {
 #input {
     margin: 5px;
     color: #a89983;
-    border: none; 
     background-color: #3C3836; 
-}
-
-#input < image { 
-    color: rgba (0,0,0,0);
 }
 
 #inner-box {
     margin: 5px;
-    border: none;
     background-color: #272727;
 }
 
 #outer-box {
     margin: 5px;
-    border: none;
     background-color: #272727; 
 }
 
 #scroll {
     margin: 5px;
-    border: none;
 }
 
 #text {
     margin: 5px;
     color: #a89983;
-    border: none;
+}
+
+#text:selected {
+    color: #ebdbb2;
 }
 
 #entry:selected {
-    background-color: rgba(0,0,0,0);
+    background-color: #a89983;
     text-decoration: none; 
-    border: none;
 }
