@@ -15,7 +15,7 @@ Color scheme adapted from [Gruvbox](https://github.com/morhetz/gruvbox) with [In
 - **swaylock** — Screen locker.
 - **swayidle** — Idle management daemon.
 - **swaybar+i3status** — Status bar.
-- **swaymsg-launcher-desktop** — Application launcher.
+- **wofi** — Application launcher.
 - **mako** - Notification daemon.
 - **ranger** - File manager.
 - **zathura** - PDF/EPUB/CBZ viewer.
