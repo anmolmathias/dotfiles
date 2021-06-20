@@ -93,6 +93,9 @@ bindsym $mod+Shift+q kill
 # Lock screen
 bindsym $mod+Escape exec swaylock
 
+# wofipassmenu
+bindsym $mod+Shift+p exec wofipassmenu
+
 # Clipman queue history
 bindsym $mod+y exec clipman pick --tool wofi -T'--prompt="queue history" -i'
 
@@ -105,8 +108,9 @@ bindsym Print exec grim ~/Pictures/Screenshots/$(date +%s).png
 # Select area and capture
 bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%s).png  
 
+#
 # Capture area, upload and copy link to clipboard
-bindsym $mod+Shift+Print exec slurp | grim -g - - | curl --form 'file=@-' http://0x0.st | wl-copy && swaynag -m "screenshot uploaded & url copied to clipboard"
+bindsym $mod+Print exec slurp | grim -g - - | curl --form 'file=@-' http://0x0.st | wl-copy && swaynag -m "screenshot uploaded & url copied to clipboard"
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
