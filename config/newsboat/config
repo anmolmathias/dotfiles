@@ -1,7 +1,10 @@
-browser          "qutebrowser %u"
-macro m set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser qutebrowser
+# general
+browser          "w3m %u"
+macro m set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser w3m %u
+macro o set browser "qutebrowser %u" ; open-in-browser ; set browser w3m %u
 show-read-feeds  no
 auto-reload      yes
+reload-threads 100
 download-full-page yes
 mark-as-read-on-hover yes
 show-title-bar no
@@ -21,9 +24,7 @@ bind-key k up
 bind-key l open
 bind-key h quit
 
-# plain color scheme for newsbeuter <http://www.newsbeuter.org/>
-# boring black and white color configuration that resembles the classic look of really old terminals
-
+# color scheme
 color listnormal        default default
 color listnormal_unread default default
 color listfocus         default default reverse bold
