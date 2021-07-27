@@ -8,12 +8,13 @@ set $up k
 set $right l
 
 # Terminal emulator
-set $term kitty
+set $term foot
 
 # Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show=drun --lines=5 --prompt=""
+#set $menu wofi --show=drun --lines=5 --prompt=""
+set $menu j4-dmenu-desktop --dmenu='bemenu -i -b --nb "#282828" --nf "#ebdbb2" --tf "#d79921" --ff "#d79921" --hf "#d79921" --tb "#282828" --fb "#282828" --hb "#282828" --sb "#282828" --scb "#282828" --fn "pango:Inter 10"' --term='foot'
 
 #
 # Autostart
@@ -28,16 +29,11 @@ exec mako
 # wlsunset
 exec wlsunset -l 29.1 -L 78.4
 
-# Clipman
-set $clipboard "~/.local/share/clipman.json"
-exec wl-paste -t text --watch clipman store
-exec wl-paste -p -t text --watch clipman store -P --max-items=60 --histpath="~/.local/share/clipman-primary.json"
-
 ### Output configuration
 #
 
 # Default wallpaper
-output * bg /home/nml/Pictures/Wallpaper/totoro2.png fit
+output * bg /home/nml/Pictures/Wallpapers/ArchLight.png fit
 
 #
 # Example configuration:
@@ -50,8 +46,8 @@ output * bg /home/nml/Pictures/Wallpaper/totoro2.png fit
 #
 
 exec swayidle \
-  timeout 300 'swaylock' \
-  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  timeout 600 'swaylock' \
+  timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
   before-sleep 'swaylock'
 
 #
@@ -93,11 +89,8 @@ bindsym $mod+Shift+q kill
 # Lock screen
 bindsym $mod+Escape exec swaylock
 
-# wofipassmenu
-bindsym $mod+Shift+p exec wofipassmenu
-
 # Clipman queue history
-bindsym $mod+y exec clipman pick --tool wofi -T'--prompt="queue history" -i'
+bindsym $mod+i exec copyq toggle
 
 # Start launcher
 bindsym $mod+space exec $menu
@@ -280,6 +273,9 @@ for_window [app_id="qutebrowser"] layout tabbed
 # wlsunset
 bindsym $mod+Shift+w exec wlsunset-toggle.sh
 
+# copyq
+for_window [app_id="copyq"] floating enable, resize set 30 ppt 60 ppt
+
 #
 # Scheme
 #
@@ -307,7 +303,7 @@ client.placeholder
 
 gaps inner 0
 
-default_border pixel 3
+default_border pixel 2
 
 #
 # Status Bar:
@@ -316,7 +312,7 @@ default_border pixel 3
 
 bar {
     status_command i3status
-    position top
+    position bottom 
     tray_output none
     font pango:Inter Bold 9
 colors {
