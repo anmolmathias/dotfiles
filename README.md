@@ -8,16 +8,16 @@ Color scheme adapted from [Gruvbox](https://github.com/morhetz/gruvbox) with [In
 
 ## Dependencies
 - **bash** — Shell.
-- **kitty** — Terminal emulator.
+- **foot** — Terminal emulator.
 - **vim** — Text editor.
 - **sway** — Window manager.
 - **qutebrowser** - Web browser.
 - **swaylock** — Screen locker.
 - **swayidle** — Idle management daemon.
 - **swaybar+i3status** — Status bar.
-- **wofi** — Application launcher.
+- **j4-menu-desktop+bemenu** — Application launcher.
 - **mako** - Notification daemon.
-- **ranger** - File manager.
+- **lf** - File manager.
 - **zathura** - PDF/EPUB/CBZ viewer.
 - **newsboat** - RSS reader.
 - **grim+slurp** - Screenshot tools.
