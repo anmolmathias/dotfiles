@@ -292,11 +292,11 @@ c.tabs.tabs_are_windows = True
 # the search engine name to the search term, e.g. `:open google
 # qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://startpage.com/do/search?query={}', 'am': 'https://www.amazon.co.in/s?k={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?q={}', 're': 'https://www.reddit.com/r/{}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
+c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'am': 'https://www.amazon.co.in/s?k={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'g': 'https://www.google.com/search?q={}', 're': 'https://www.reddit.com/r/{}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'https://www.startpage.com/do/mypage.pl?prfe=f3205c9e12f828620b0a7bd7cf1294dbf8e90e6aa577efdf24f1e6b2ffb6fca33ca1dc401ad17a1e9e69f41f63816d20fa0d3525d12a68d350944819087b6dd58786ed7703d479a4f93d42d529dd'
+c.url.start_pages = 'https://www.google.com'
 
 # Default font families to use. Whenever "default_family" is used in a
 # font setting, it's replaced with the fonts listed here. If set to an
