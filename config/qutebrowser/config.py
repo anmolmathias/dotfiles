@@ -296,7 +296,7 @@ c.url.searchengines = {'DEFAULT': 'https://www.google.com/search?q={}', 'am': 'h
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'https://www.google.com'
+c.url.start_pages = '/home/nml/.config/qutebrowser/startpage/index.html'
 
 # Default font families to use. Whenever "default_family" is used in a
 # font setting, it's replaced with the fonts listed here. If set to an
@@ -309,48 +309,48 @@ c.fonts.default_family = 'Inter'
 # either a float value with a "pt" suffix, or an integer value with a
 # "px" suffix.
 # Type: String
-c.fonts.default_size = '10pt'
+c.fonts.default_size = '16px'
 
 # Font used in the completion widget.
 # Type: Font
-c.fonts.completion.entry = '10pt "Inter"'
+c.fonts.completion.entry = '12pt "Inter"'
 
 # Font used in the completion categories.
 # Type: Font
-c.fonts.completion.category = '10pt "Inter"'
+c.fonts.completion.category = '12pt "Inter"'
 
 # Font used for the context menu. If set to null, the Qt default is
 # used.
 # Type: Font
-c.fonts.contextmenu = '10pt "Inter"'
+c.fonts.contextmenu = '12pt "Inter"'
 
 # Font used for the debugging console.
 # Type: Font
-c.fonts.debug_console = '10pt "Inter"'
+c.fonts.debug_console = '12pt "Inter"'
 
 # Font used for the downloadbar.
 # Type: Font
-c.fonts.downloads = '10pt "Inter"'
+c.fonts.downloads = '12pt "Inter"'
 
 # Font used for the hints.
 # Type: Font
-c.fonts.hints = '10pt "Inter"'
+c.fonts.hints = '12pt "Inter"'
 
 # Font used in the keyhint widget.
 # Type: Font
-c.fonts.keyhint = '10pt "Inter"'
+c.fonts.keyhint = '12pt "Inter"'
 
 # Font used for info messages.
 # Type: Font
-c.fonts.messages.info = '10pt "Inter"'
+c.fonts.messages.info = '12pt "Inter"'
 
 # Font used for prompts.
 # Type: Font
-c.fonts.prompts = '10pt "Inter"'
+c.fonts.prompts = '12pt "Inter"'
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = '10pt "Inter"'
+c.fonts.statusbar = '12pt "Inter"'
 
 # Font family for standard fonts.
 # Type: FontFamily
