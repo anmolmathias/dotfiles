@@ -1,6 +1,6 @@
 # dotfiles
 
-Distro-agnostic configurations for production tools on GNU/Linux, compatible for a wayland-based installation.
+Distro-agnostic configurations for production tools on GNU/Linux, compatible for a Wayland-based installation.
 
 <img alt="Desktop screenshot" src="resources/desktop.png">
 
@@ -9,7 +9,7 @@ Color scheme adapted from [Gruvbox](https://github.com/morhetz/gruvbox) with [In
 ## Dependencies
 - **bash** — Shell.
 - **foot** — Terminal emulator.
-- **vim** — Text editor.
+- **emacs** — Text editor.
 - **sway** — Window manager.
 - **qutebrowser** - Web browser.
 - **swaylock** — Screen locker.
