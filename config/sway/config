@@ -13,8 +13,7 @@ set $term foot
 # Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-#set $menu wofi --show=drun --lines=5 --prompt=""
-set $menu j4-dmenu-desktop --dmenu='bemenu -i -b --nb "#282828" --nf "#ebdbb2" --tf "#d79921" --ff "#d79921" --hf "#d79921" --tb "#282828" --fb "#282828" --hb "#282828" --sb "#282828" --scb "#282828" --fn "pango:Inter 10"' --term='foot'
+set $menu j4-dmenu-desktop --dmenu='bemenu -i -b --nb "#282828" --nf "#ebdbb2" --tf "#d79921" --ff "#d79921" --hf "#d79921" --tb "#282828" --fb "#282828" --hb "#282828" --sb "#282828" --scb "#282828" --fn "pango:Inter 16"' --term='foot'
 
 #
 # Autostart
@@ -32,8 +31,11 @@ exec wlsunset -l 29.1 -L 78.4
 ### Output configuration
 #
 
+# Scale
+output eDP-1 scale 1
+
 # Default wallpaper
-output * bg /home/nml/Pictures/Wallpapers/ArchLight.png fit
+output * bg ~/pictures/wallpapers/wall.png fill
 
 #
 # Example configuration:
@@ -96,10 +98,10 @@ bindsym $mod+i exec copyq toggle
 bindsym $mod+space exec $menu
 
 # Capture current screen
-bindsym Print exec grim ~/Pictures/Screenshots/$(date +%s).png
+bindsym Print exec grim ~/pictures/screenshots/$(date +%s).png
 
 # Select area and capture
-bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%s).png  
+bindsym Shift+Print exec grim -g "$(slurp)" ~/pictures/screenshots/$(date +%s).png  
 
 #
 # Capture area, upload and copy link to clipboard
@@ -118,6 +120,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioPlay exec clementine --play-pause
+bindsym XF86AudioStop exec clementine --stop
+bindsym XF86AudioNext exec clementine --next
+bindsym XF86AudioPrev exec clementine --previous
 
 # sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
@@ -292,7 +298,7 @@ set $bghard #1d2021
 set $white #ebdbb2
 
 # Font
-font pango:Inter, DejaVu Sans Mono, Noto Sans Mono Bold, Sarasa Gothic 9
+font pango:Inter, DejaVu Sans Mono, Noto Sans Mono Bold, Sarasa Gothic 12
 
 # Window decorations    border  backgr  text    indic.  chl_bor
 client.focused          $yellow $yellow $bghard $purple $yellow
@@ -303,18 +309,18 @@ client.placeholder
 
 gaps inner 0
 
-default_border pixel 2
+default_border pixel 3
 
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
+#
 
 bar {
     status_command i3status
     position bottom 
     tray_output none
-    font pango:Inter Bold 9
+    font pango:Inter Bold 12
 colors {
         background $bg
         separator $white
