@@ -1,16 +1,15 @@
-directory: ~/Music
-library: ~/Music/musiclibrary.db
+directory: ~/music
+library: ~/music/musiclibrary.db
 import:
   move: yes
   write: yes
   log: beetslog.txt
 art_filename: cover 
-plugins: fetchart
 pluginpath: ~/beets/myplugins
 ui:
   color: yes
 
 paths:
-  default: Albums/$albumartist/$album%aunique{}/$track $title
-  singleton: Singles/$artist/$title
-  comp: Compilations/$album%aunique{}/$track $title
+  default: albums/$albumartist/[$original_year] $album%aunique{}/$track $title
+  singleton: singles/$artist/$title
+  comp: compilations/[$original_year] $album%aunique{}/$track $title
