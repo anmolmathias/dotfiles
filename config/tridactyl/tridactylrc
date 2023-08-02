@@ -1,0 +1,36 @@
+" General Settings
+set update.lastchecktime 1689753832348
+
+" Binds
+bind J tabnext
+bind K tabprev
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore H back
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore L forward
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore J tabnext
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore K tabprev
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore o fillcmdline open
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore O current_url open
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore t fillcmdline tabopen
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore T current_url tabopen
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore f hint
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore F hint -b
+bindurl /(^|.*\.)reddit\.com($|\/.*) --mode=ignore d tabclose
+
+bindurl .*boards.4channel.org.* --mode=ignore H back
+bindurl .*boards.4channel.org.* --mode=ignore L forward
+bindurl .*boards.4channel.org.* --mode=ignore J tabnext
+bindurl .*boards.4channel.org.* --mode=ignore K tabprev
+bindurl .*boards.4channel.org.* --mode=ignore o fillcmdline open
+bindurl .*boards.4channel.org.* --mode=ignore O current_url open
+bindurl .*boards.4channel.org.* --mode=ignore t fillcmdline tabopen
+bindurl .*boards.4channel.org.* --mode=ignore T current_url tabopen
+bindurl .*boards.4channel.org.* --mode=ignore f hint
+bindurl .*boards.4channel.org.* --mode=ignore F hint -b
+bindurl .*boards.4channel.org.* --mode=ignore d tabclose
+
+" Autocmds
+autocmd DocStart /(^|.*\.)reddit\.com($|\/.*) mode ignore
+autocmd DocStart .*boards.4channel.org.* mode ignore
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl

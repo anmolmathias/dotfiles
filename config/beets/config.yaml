@@ -1,0 +1,15 @@
+directory: ~/Music
+library: ~/Music/musiclibrary.db
+import:
+  move: yes
+  write: yes
+  log: beetslog.txt
+art_filename: cover 
+ui:
+  color: yes
+paths:
+  default: Albums/$albumartist/$album%aunique{}/%if{$multidisc,Disc $disc/}$track $title
+  singleton: Singles/$artist/$title
+  comp: Compilations/$album%aunique{}/%if{$multidisc,Disc $disc/}$track $title
+item_fields:
+  multidisc: 1 if disctotal > 1 else 0
