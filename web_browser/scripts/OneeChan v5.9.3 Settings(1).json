@@ -49,7 +49,7 @@
   "Backlink Icons": true,
   "Backlinks on Bottom": false,
   "Borders": 2,
-  "Margin Between Replies": "-5",
+  "Margin Between Replies": "",
   "Post Message Margin": 2,
   "Justified Text": true,
   "Show Background": true,
@@ -64,10 +64,10 @@
   "Custom Decoration Width": 0,
   "Post Highlight Style": "solid",
   "Font Family": "sans-serif",
-  "Font Size": 16,
-  "Backlink Font Size": 12,
+  "Font Size": 15,
+  "Backlink Font Size": 11,
   "Bitmap Font": false,
   "Version Fix": 1,
-  "Selected Theme": 7,
-  "NSFW Theme": 7
+  "Selected Theme": 4,
+  "NSFW Theme": 4
 }

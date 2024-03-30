@@ -5,11 +5,28 @@ import:
   write: yes
   log: beetslog.txt
 art_filename: cover 
+plugins: embedart convert playlist importfeeds duplicates
+importfeeds:
+  dir: ~/Music/Playlists
+  formats: m3u m3u_session
+  relative_to: ~/Music/Playlists
+playlist:
+  auto: yes
+  relative_to: ~/Music/Playlists
+  playlist_dir: ~/Music/Playlists
+convert:
+  dest: ~/Sync/Music
+  paths:
+    default: Albums/$albumartist/$album%aunique{}/$track $title
+    singleton: Singles/$artist/$title 
+    comp: Compilations/$album%aunique{}/$track $title 
+  no_convert: format:mp3
+  never_convert_lossy_files: yes
 ui:
   color: yes
 paths:
-  default: Albums/$albumartist/$album%aunique{}/%if{$multidisc,Disc $disc/}$track $title
+  default: Albums/$albumartist/$album%aunique{}/$track $title
   singleton: Singles/$artist/$title
-  comp: Compilations/$album%aunique{}/%if{$multidisc,Disc $disc/}$track $title
+  comp: Compilations/$album%aunique{}/$track $title
 item_fields:
   multidisc: 1 if disctotal > 1 else 0

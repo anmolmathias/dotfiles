@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "7/30/2023, 4:06:53 PM",
-	"time": 1690713413594,
+	"@time": "30/3/2024, 6:17:02 pm",
+	"time": 1711802822674,
 	"environment": {
-		"extension": "1.99.995",
+		"extension": "1.99.997",
 		"platform": "linux",
-		"firefox": 115
+		"firefox": 124
 	},
 	"exclusionRules": [
 		{
@@ -19,6 +19,10 @@
 		{
 			"passKeys": "",
 			"pattern": ":https://mail.google.com/"
+		},
+		{
+			"passKeys": "A J K j k m n o p r v ",
+			"pattern": ":https://feedly.com/"
 		}
 	],
 	"keyLayout": 2,
@@ -26,8 +30,10 @@
 		"#!no-check",
 		"map J nextTab",
 		"map K previousTab",
+		"unmap <f8>",
 		""
 	],
+	"linkHintCharacters": "asdfqwerzxcvtg",
 	"searchEngines": [
 		"bi|bing: https://www.bing.com/search?q=%s \\",
 		"  blank=https://www.bing.com/ Bing",
