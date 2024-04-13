@@ -1,2 +1,2 @@
 # dotfiles
-personal configurations for various nix tools
+personal configurations for nix installations among others
