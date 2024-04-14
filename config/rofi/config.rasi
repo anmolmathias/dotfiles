@@ -2,18 +2,14 @@ configuration {
   font: "Ubuntu 13";
   modes: [ combi ];
   combi-modes: [ window, drun, run ];
+  combi-hide-mode-prefix: true;
 }
 
-/******************************************************************************
- * ROFI Color theme
- * User: Rasi
- * Copyright: Rasmus Steinke
- ******************************************************************************/
 * {
     selected-normal-foreground:  rgba ( 255, 255, 255, 100 % );
-    foreground:                  #000000;
+    foreground:                  #2c2c2e;
     normal-foreground:           @foreground;
-    alternate-normal-background: #E9E9E9;
+    alternate-normal-background: #d1d1d6;
     red:                         #B52A4A;
     selected-urgent-foreground:  rgba ( 239, 97, 85, 100 % );
     blue:                        #0073E5;
@@ -23,15 +19,15 @@ configuration {
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     selected-active-foreground:  rgba ( 129, 91, 164, 100 % );
     alternate-active-background: rgba ( 47, 30, 46, 18 % );
-    background:                  #E9E9E9;
-    bordercolor:                 #DDDDDD;
+    background:                  #d1d1d6;
+    bordercolor:                 #d1d1d6;
     alternate-normal-foreground: @foreground;
-    normal-background:           #E9E9E9;
+    normal-background:           #d1d1d6;
     lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  #E95420;
-    border-color:                #DDDDDD;
+    selected-normal-background:  #8787AF;
+    border-color:                #d1d1d6;
     spacing:                     2;
-    separatorcolor:              #DDDDDD;
+    separatorcolor:              #d1d1d6;
     urgent-background:           rgba ( 47, 30, 46, 15 % );
     selected-urgent-background:  rgba ( 129, 91, 164, 33 % );
     alternate-urgent-foreground: @urgent-foreground;
@@ -42,8 +38,8 @@ configuration {
 }
 window {
     background-color: @background;
-    border:           1;
-    padding:          12;
+    border:           0;
+    padding:          20;
     border-radius:    6px;
     width:            600px;
 }
@@ -61,15 +57,16 @@ textbox {
 }
 listview {
     fixed-height: 0;
-    border:       2px dash 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
     scrollbar:    false;
     padding:      2px 0px 0px ;
 }
 element {
-    border:  0;
-    padding: 3px ;
+    padding: 5px 8px;
+    border-radius: 4px;
+    children: [ element-icon, element-text ];
+    spacing: 15px;
 }
 element-text {
     background-color: inherit;
@@ -128,7 +125,7 @@ button.selected {
 inputbar {
     spacing:    0;
     text-color: @normal-foreground;
-    padding:    1px ;
+    padding:    5px 8px;
 }
 case-indicator {
     spacing:    0;
@@ -137,10 +134,12 @@ case-indicator {
 entry {
     spacing:    0;
     text-color: @normal-foreground;
+    placeholder: "search...";
 }
 prompt {
     spacing:    0;
     text-color: @normal-foreground;
+    enabled: false;
 }
 inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
@@ -150,4 +149,5 @@ textbox-prompt-colon {
     str:        ":";
     margin:     0px 0.3em 0em 0em ;
     text-color: @normal-foreground;
+    enabled: false;
 }
