@@ -1,19 +1,17 @@
-# Default config for sway
-#
-# Read `man 5 sway` for a complete reference.
+include "$HOME/.config/sway/themes/colors.conf"
 
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
+
+# Logo key
 set $mod Mod4
 
-# Home row direction keys, like vim
+# Home row direction keys
 set $left h
 set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
+# Terminal emulator
 set $term kitty
 
 # Autostart
@@ -21,23 +19,15 @@ exec mako
 exec darkman
 exec keyd-application-mapper -d
 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# Recommends: rofi-wayland
+# Application launcher
 set $rofi_cmd rofi \
         -terminal '$term'
-# Shows a combined list of the applications with desktop files and
-# executables from PATH.
-# TODO: add window with the next release of rofi-wayland
-#set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 set $menu $rofi_cmd -show combi -modes combi -combi-modes "window,drun,run"
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# Requires: desktop-backgrounds-compat, swaybg
-output * bg /home/nml/Pictures/Wallpapers/snotgirl.png fill
+# Default wallpaper
+output * bg /home/nml/Pictures/Wallpapers/lamb.jpg fill
 #
 # Example configuration:
 #
@@ -143,6 +133,9 @@ input * {
     bindsym $mod+comma workspace prev
     # switch to next workspace
     bindsym $mod+period workspace next
+
+    bindsym $mod+Shift+period move container to workspace next, workspace next
+    bindsym $mod+Shift+comma move container to workspace prev, workspace prev
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -241,6 +234,8 @@ bindsym $mod+Shift+n exec /home/nml/.cargo/bin/sway-new-workspace move
 
 bindsym $mod+Shift+p exec hyprpicker -a
 
+bindsym $mod+Shift+t exec darkman toggle
+
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
     floating enable, sticky enable
 
@@ -249,13 +244,12 @@ for_window [app_id="firefox" title="^Picture-in-Picture$"] \
 #
 
 # class                   border  backgr. text    indicator child_border
-client.focused            #E95420 #E95420 #fafafa #AEA79F   #E95420
-client.focused_inactive   #333333 #2B2B2B #888888 #333333   #333333
-client.focused_tab_title  #E95420 #2B2B2B #888888 #333333   #333333
-client.unfocused          #333333 #2B2B2B #888888 #333333   #333333
-client.urgent             #2f343a #900000 #fafafa #333333   #F99B11
-client.placeholder        #000000 #0c0c0c #fafafa #000000   #0c0c0c
-
+client.focused            $cf_br  $cf_b   $cf_t   $cf_i     $cf_cb
+client.focused_inactive   $cfi_br $cfi_b  $cfi_t  $cfi_i    $cfi_cb
+client.focused_tab_title  $cft_br $cft_b  $cft_t  $cft_i    $cft_cb
+client.unfocused          $cu_br  $cu_b   $cu_t   $cu_i     $cu_cb
+client.urgent             $cr_br  $cr_b   $cr_t   $cr_i     $cr_cb
+client.placeholder        $cf_br  $cf_b   $cf_t   $cf_i     $cf_cb
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
