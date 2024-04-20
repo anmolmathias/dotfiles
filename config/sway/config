@@ -18,11 +18,14 @@ set $term kitty
 exec mako
 exec darkman
 exec keyd-application-mapper -d
+exec pomo.sh notify &
+exec pomo.sh start
 
 # Application launcher
 set $rofi_cmd rofi \
         -terminal '$term'
 set $menu $rofi_cmd -show combi -modes combi -combi-modes "window,drun,run"
+set $alt_tab_menu rofi -modes window -show window
 
 ### Output configuration
 #
@@ -38,7 +41,7 @@ output * bg /home/nml/Pictures/Wallpapers/lamb.jpg fill
 output eDP-1 resolution 1920x1080 pos 0,0
 output "Sony SONY TV 0x00000101" mode 1920x1080@60Hz pos 1920,0
 
-default_border pixel
+default_border pixel 2
 
 
 ### Idle configuration
@@ -73,6 +76,10 @@ input * {
 	natural_scroll enabled
 }
 
+input type:touchpad {
+	scroll_factor 0.15
+}
+
 ### Key bindings
 #
 # Basics:
@@ -84,10 +91,13 @@ input * {
     bindsym $mod+q kill
 
     # Lock screen
-    bindsym $mod+Escape exec swaylock -f
+    bindsym $mod+Grave exec swaylock -f
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Switch windows
+    bindsym $mod+Tab exec $alt_tab_menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -129,13 +139,15 @@ input * {
 # Workspaces:
 #
 
+    # switch workspace back and forth
+    bindsym $mod+Escape workspace back_and_forth
     # switch to previous workspace
-    bindsym $mod+comma workspace prev
+    bindsym $mod+comma workspace prev_on_output
     # switch to next workspace
-    bindsym $mod+period workspace next
+    bindsym $mod+period workspace next_on_output
 
-    bindsym $mod+Shift+period move container to workspace next, workspace next
-    bindsym $mod+Shift+comma move container to workspace prev, workspace prev
+    bindsym $mod+Shift+period move container to workspace next_on_output, workspace next_on_output
+    bindsym $mod+Shift+comma move container to workspace prev_on_output, workspace prev_on_output
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -181,7 +193,7 @@ input * {
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    #bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
