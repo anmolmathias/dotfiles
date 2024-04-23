@@ -236,6 +236,7 @@ bindsym $mod+r mode "resize"
 
 bindgesture swipe:right workspace prev
 bindgesture swipe:left workspace next
+bindgesture swipe:up exec $menu
 
 bindsym $mod+n exec /home/nml/.cargo/bin/sway-new-workspace open
 bindsym $mod+Shift+n exec /home/nml/.cargo/bin/sway-new-workspace move
