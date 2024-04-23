@@ -18,14 +18,13 @@ set $term kitty
 exec mako
 exec darkman
 exec keyd-application-mapper -d
-exec pomo.sh notify &
-exec pomo.sh start
 
 # Application launcher
 set $rofi_cmd rofi \
         -terminal '$term'
 set $menu $rofi_cmd -show combi -modes combi -combi-modes "window,drun,run"
-set $alt_tab_menu rofi -modes window -show window
+set $alt_tab_menu rofi -show window -kb-accept-entry "!Super-Tab,!Super_L,!Super+Super_L,Return" -kb-row-down "Super-Tab,Super+Down,Super+j,Down" -kb-row-up "Super+Shift+Tab,Super+Up,Super+k,Up" -kb-cancel "Super+Escape,Escape"
+
 
 ### Output configuration
 #
