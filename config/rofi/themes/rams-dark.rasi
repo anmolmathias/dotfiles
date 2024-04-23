@@ -21,8 +21,8 @@ configuration {
     lightbg:                     @background;
     selected-active-foreground:  @foreground;
     alternate-active-background: @background;
-    foreground:                  #ebebeb;
-    background:                  #141414;
+    foreground:                  #141414;
+    background:                  #ebebeb;
     bordercolor:                 @background;
     alternate-normal-foreground: @foreground;
     normal-background:           @background;
@@ -72,7 +72,6 @@ textbox-custom {
     expand: false;
     text-color: @background;
 }
-
 element {
     padding: 5px 8px;
     border-radius: 4px;
@@ -104,12 +103,9 @@ element.selected.normal {
     background-color: @background;
     text-color:       @foreground;
 }
-
 textbox-custom.selected.normal {
     text-color: #ee483e;
 }
-
-
 element.selected.urgent {
     background-color: @selected-urgent-background;
     text-color:       @selected-urgent-foreground;
