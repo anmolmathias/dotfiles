@@ -52,9 +52,6 @@ let &t_RT = "\e[23;2t"
 " using a color theme with a background color in terminals such as
 " kitty that do not support background color erase.
 let &t_ut=''
-
-set t_Co=256
+set termguicolors
 set background=light
 colorscheme rams
-highlight Normal ctermbg=NONE
-"highlight nonText ctermbg=NONE
