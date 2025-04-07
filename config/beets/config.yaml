@@ -5,7 +5,7 @@ import:
   write: yes
   log: beetslog.txt
 art_filename: cover 
-plugins: embedart convert playlist importfeeds duplicates
+plugins: convert playlist importfeeds duplicates
 importfeeds:
   dir: ~/Music/Playlists
   formats: m3u m3u_session
@@ -15,13 +15,14 @@ playlist:
   relative_to: ~/Music/Playlists
   playlist_dir: ~/Music/Playlists
 convert:
-  dest: ~/Sync/Music
-  paths:
-    default: Albums/$albumartist/$album%aunique{}/$track $title
-    singleton: Singles/$artist/$title 
-    comp: Compilations/$album%aunique{}/$track $title 
-  no_convert: format:mp3
+  auto: yes
+  no_convert: format:mp3,format:opus
   never_convert_lossy_files: yes
+  format: opus
+  formats:
+    opus:
+      command: opusenc --bitrate 160 $source $dest
+      extension: opus
 ui:
   color: yes
 paths:
