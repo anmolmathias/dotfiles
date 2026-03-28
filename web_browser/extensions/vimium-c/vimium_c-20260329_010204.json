@@ -1,39 +1,57 @@
 {
 	"name": "Vimium C",
-	"@time": "30/3/2024, 6:17:02 pm",
-	"time": 1711802822674,
+	"@time": "29/3/2026, 1:02:04 am",
+	"time": 1774726324723,
 	"environment": {
-		"extension": "1.99.997",
+		"extension": "2.12.3",
 		"platform": "linux",
-		"firefox": 124
+		"firefox": 149
 	},
 	"exclusionRules": [
-		{
-			"passKeys": "^ G H J K L O X g g o t x ",
-			"pattern": "^https?:\\/\\/www\\.reddit\\.com"
-		},
-		{
-			"passKeys": "^ G H J K L O X g g o t x ",
-			"pattern": "^https?:\\/\\/\\.*boards\\.4chan"
-		},
 		{
 			"passKeys": "",
 			"pattern": ":https://mail.google.com/"
 		},
 		{
-			"passKeys": "A J K j k m n o p r v ",
+			"passKeys": "C J K [ ] a c e e j k l m n p r s z ",
+			"pattern": ":https://www.reddit.com/"
+		},
+		{
+			"passKeys": "J K j k n p v ",
 			"pattern": ":https://feedly.com/"
+		},
+		{
+			"passKeys": "L d e j k l n p t ",
+			"pattern": ":https://boards.4chan.org/"
+		},
+		{
+			"passKeys": "f ",
+			"pattern": "^https?://localhost:8096/"
+		},
+		{
+			"passKeys": "c f k ",
+			"pattern": ":https://www.youtube.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://excalidraw.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://docs.google.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://www.figma.com/"
 		}
 	],
-	"keyLayout": 2,
+	"keyLayout": 18,
 	"keyMappings": [
 		"#!no-check",
-		"map J nextTab",
-		"map K previousTab",
 		"unmap <f8>",
+		"map zf LinkHints.activate action=\"hover\"",
 		""
 	],
-	"linkHintCharacters": "asdfqwerzxcvtg",
 	"searchEngines": [
 		"bi|bing: https://www.bing.com/search?q=%s \\",
 		"  blank=https://www.bing.com/ Bing",
@@ -65,5 +83,7 @@
 		"js\\:|Js: javascript:\\ $S; JavaScript",
 		""
 	],
-	"vimSync": true
+	"searchUrl": "https://duckduckgo.com/?q=$s DuckDuckGo",
+	"vimSync": true,
+	"ignoreCapsLock": 2
 }
