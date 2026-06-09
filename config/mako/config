@@ -1,0 +1,21 @@
+on-notify=exec mpv /usr/share/sounds/Yaru/stereo/message.oga
+width=300
+height=210
+font=Ubuntu 11
+background-color=#cd974b
+text-color=#111111
+padding=12
+border-size=0
+default-timeout=5000
+max-icon-size=64
+
+[app-name="grimshot"]
+on-notify=exec mpv --no-config --terminal=no /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
+on-button-left=exec makoctl list -j | jq --argjson TARGET_ID "$id" '.[] | select(.id==$TARGET_ID) | .app_icon' | xargs imv-wayland
+
+[app-name="Signal"]
+on-notify=exec mpv --no-config --terminal=no /usr/share/sounds/Yaru/stereo/message.oga
+
+[app-name="Telegram"]
+on-notify=exec mpv --no-config --terminal=no /usr/share/sounds/Yaru/stereo/message.oga
+
