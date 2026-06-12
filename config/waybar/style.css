@@ -1,0 +1,134 @@
+@define-color green #9bdb4d;
+@define-color fg #c9c9c9;
+@define-color bg #111111;
+
+* {
+	min-height: 0;
+	font-family: "Inter";
+	border-radius: 0;
+}
+#mpris {
+	margin-right: 30px;
+	color: @fg;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+window#waybar {
+	background: @bg;
+	font-size: 16px;
+}
+
+#mode {
+	font-size: 5px;
+	color: #0b2400;
+	background: @green; 
+	margin: 10px;
+	border-radius: 400;
+	border: none;
+	padding: 2px 2px;
+}
+
+#idle_inhibitor,
+#language,
+#pulseaudio,
+#battery,
+#backlight,
+#window,
+#network,
+#bluetooth,
+#custom-theme-mode,
+#custom-clock {
+	color: @fg;
+	margin: 0px 4px;
+	font-size: 12px;
+}
+
+#taskbar {
+	font-size: 11px;
+	margin-left: 40px;
+}
+
+#taskbar button {
+	border: none;
+	color: @fg; 
+	font-weight: bold;
+}
+
+#taskbar button.active {
+	background: RGBA(239, 239, 242, 0.2);
+}
+
+#taskbar button:hover {
+	background: RGBA(239, 239, 242, 0.1);
+
+}
+
+#custom-clock {
+	font-size: 11px;
+	font-weight: bold;
+	margin-right: 6px;
+}
+
+#workspaces {
+	font-size: 11px;
+	padding: 6px;
+}
+
+#workspaces button {
+	color: @fg;
+	border: none;
+	padding: 0px 2px;
+	font-weight: bold;
+	margin-right: 2px;
+	
+}
+
+#workspaces button.focused {
+	border-radius: 2;
+	color: #381f00;
+	border: none;
+	background: #f9c440;
+	font-weight: bold;
+}
+
+#workspaces button.focused:hover {
+	border-radius: 2;
+	color: #381f00;
+	border: none;
+	background: #f9c440;
+	font-weight: bold;
+}
+
+#workspaces button:hover {
+	border-radius: 2;
+	color: #ffffff;
+	border: none;
+	background: RGBA(239, 239, 242, 0.1);
+	font-weight: bold;
+}
+
+#workspaces button.urgent {
+	border-radius: 2; 
+	border: none;
+	background: #c6262e;
+	color: #330000;
+	font-weight:bold;
+}
+
+#tray {
+	padding-right: 5px;
+	padding-left: 10px;
+}
+
+#battery.warning {
+	color: #f9c440;
+}
+
+#battery.default {
+	color: @green;
+}
+
+#battery.critical {
+	color: #c6262e;
+}

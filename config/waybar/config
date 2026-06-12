@@ -1,0 +1,136 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "height": 30,
+    "spacing": 0,
+    "modules-left": ["sway/workspaces","wlr/taskbar"],
+    "modules-center": [],
+    "modules-right": ["mpris", "sway/mode", "network", "bluetooth", "pulseaudio", "idle_inhibitor", "custom/theme-mode", "battery", "custom/clock"],
+
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "format": "{name}"
+    },
+
+"wlr/taskbar": {
+	"format": "{icon}  {title:.30}",
+	"icon-size": 14,
+	"icon-theme": "Yaru-yellow",
+	"tooltip-format": "{title}",
+	"on-click": "activate",
+	"on-click-middle": "close"
+},
+
+
+
+"mpris": {
+        "format": "{player_icon}  {artist} - {title}",
+        "format-paused": "{status_icon} {artist} - {title}",
+        "max-length": 80,
+        "player-icons": {
+            "default": " ",
+	    "Feishin": "󰎆 ",
+            "spotify": " ",
+	    "mpv": " "
+        },
+        "status-icons": {
+            "paused": "  "
+        },
+        "artist-len": 25,
+        "title-len": 30,
+	"ignored-players":["kdeconnect"]
+    },
+
+    "sway/mode": {
+        "format": "  "
+    },
+    "custom/clock": {
+        "format": "{}",
+        "exec": "date +'%H:%M'",
+        "interval": 3
+    },
+
+    "sway/window": {
+	"format": "            {}",
+	"all-outputs": true,
+	"offscreen-css": false,
+	"max-length": 70
+},
+
+ "network": {
+        "format": "",
+        "format-ethernet": "󰈀 ",
+        "format-wifi": "󰖩 ",
+        "format-disconnected": "󱚼 ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+	"on-click": "foot nmtui"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}",
+	"format-muted": " ",
+	"format-icons": {
+		"headphone": " ",
+		"headset": " ",
+		"hifi": "󰓃 ",
+		"default": [" ", " ", " "]
+	},
+	"on-click": "foot pulsemixer",
+	"on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	"on-scroll-up": "paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && pactl set-sink-volume @DEFAULT_SINK@ +2%",
+	"on-scroll-down": "paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && pactl set-sink-volume @DEFAULT_SINK@ -2%",
+	"tooltip-format": "Vol: {volume}",
+	"max-volume": "100"
+    },
+
+
+"bluetooth": {
+	"format": "󰂯",
+	"format-disabled": "󰂲",
+	"format-connected": " ",
+	"on-click": "blueman-manager"
+},
+
+"idle_inhibitor": {
+	"format": "{icon}",
+	"format-icons": {
+		"activated": " ",
+		"deactivated": " "
+	},
+	"timeout": 180
+},
+
+"custom/theme-mode": {
+	"format": " ",
+	"tooltip": false,
+	"on-click": "bash /home/nml/.local/bin/switch-theme-mode"
+},
+    
+    "battery": {
+        "interval": 60,
+	"states": {
+		"warning": 30,
+		"critical": 15,
+		"default": 100
+	},
+        "format": "{icon}",
+        "format-icons": {
+		"default": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+		"charging": ["󰢟 ", "󰢜 ", "󰂆 ", "󰂇 ", "󰂈 ", "󰢝 ", "󰂉 ", "󰢞 ", "󰂊 ", "󰂋 ", "󰂄 "]
+    },
+        "tooltip-format": "{capacity}%"
+    },
+
+    "backlight": {
+        "format": "<b>mon:</b> {percent}%",
+        "tooltip": false
+    },
+    
+    "tray": {
+        "icon-size": 20,
+        "spacing": 7,
+        "tooltip": false
+    }
+}
