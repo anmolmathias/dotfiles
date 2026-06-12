@@ -1,42 +1,56 @@
-font Ubuntu 12
+font Inter 11
 
 ### Variables
 #
 # Logo key. Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, vim-like
 set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+
+set $term foot
 set $browser firefox
 set $gnome-schema org.gnome.desktop.interface
+
 # Application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | wmenu | xargs swaymsg exec --
-set $menu tofi-drun | xargs swaymsg exec --
+#set $menu tofi-drun | xargs swaymsg exec --
+#set $menu sed --in-place "s/^output =.*/output = $(swaymsg --type get_outputs | jq '.[] | select(.focused).name')/" ~/.config/tofi/config && tofi-drun | xargs swaymsg exec --
+set $menu vicinae toggle
+set $clipboard vicinae vicinae://launch/clipboard/history
+
 
 include /etc/sway/config-vars.d/*
 
 ### Autostart
 #
+exec /usr/libexec/polkit-mate-authentication-agent-1
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 exec mako
-exec /usr/libexec/polkit-agent-helper-1
-exec_always {
-    export GTK_THEME="Yaru:dark"
-    gsettings set $gnome-schema gtk-theme 'Yaru-dark'
-    gsettings set $gnome-schema color-scheme prefer-dark
-}
+exec env RUST_BACKTRACE=1 RUST_LOG=swayr=debug swayrd > /tmp/swayrd.log 2>&1
+exec wl-paste --watch cliphist store
+exec kdeconnectd
+exec vicinae server
+
 
 ### Output configuration
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/warty-final-ubuntu.png fill
-output HDMI-A-1 resolution 1920x1080 position 0 0 
-#output eDP-1 resolution 1920x1080 position 1920 0
+#output * bg /usr/share/backgrounds/warty-final-ubuntu.png fill
+output * bg /home/nml/Pictures/Walls/A-Large-Body-of-Water-Surrounded-By-Mountains.jpg fill
+output HDMI-A-1 resolution 1920x1080 position 0 0
+#output eDP-1 disable
+output eDP-1 resolution 1920x1080 position 1920 0
+
+bindsym $mod+Shift+y output HDMI-A-1 resolution 1920x1080 position 0 0, output eDP-1 disable
+bindsym $mod+y output HDMI-A-1 resolution 1920x1080 position 0 0,output eDP-1 enable, output eDP-1 resolution 1920x1080 position 1920 0
 
 ### Idle configuration
 #
@@ -45,10 +59,9 @@ output HDMI-A-1 resolution 1920x1080 position 0 0
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+	  timeout 310 'if pgrep -x swaylock; then swaymsg "output * power off"; fi' resume 'if pgrep -x swaylock; then swaymsg "output * power on"; fi'
 
-bindsym $mod+Mod1+l exec swaylock
+bindsym $mod+Mod1+z exec swaylock -f -c 000000
 
 
 ### Input configuration
@@ -69,6 +82,8 @@ input * {
 	natural_scroll enabled
 }
 
+input type:keyboard xkb_numlock enabled
+
 ### Key bindings
 #
 # Basics:
@@ -81,6 +96,10 @@ input * {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # copy manager
+    #bindsym $mod+u exec $term -e bash -c 'cliphist list | fzf --no-sort | cliphist decode | wl-copy'
+    bindsym $mod+c exec $clipboard
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -95,11 +114,26 @@ input * {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    # Control Volume
-	bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-	bindsym --locked $mod+Mod1+Prior exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-	bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-	bindsym --locked $mod+Mod1+Next exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+#
+# Application Shortcuts
+#
+
+# Swayr
+	bindsym $mod+Tab exec swayr switch-to-urgent-or-lru-window
+	bindsym Mod1+Tab exec vicinae vicinae://launch/wm/switch-windows
+
+# Switch-theme-mode
+	bindsym $mod+Shift+a exec switch-theme-mode
+
+
+# Color Picker
+	bindsym $mod+Shift+p exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+
+# Control Volume
+	bindsym --locked XF86AudioRaiseVolume exec paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && pactl set-sink-volume @DEFAULT_SINK@ +5% 
+	bindsym --locked $mod+Mod1+Prior exec paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && pactl set-sink-volume @DEFAULT_SINK@ +5%
+	bindsym --locked XF86AudioLowerVolume exec paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && pactl set-sink-volume @DEFAULT_SINK@ -5%
+	bindsym --locked $mod+Mod1+Next exec paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && pactl set-sink-volume @DEFAULT_SINK@ -5%
 	bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 	bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 	bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
@@ -136,6 +170,24 @@ input * {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+    # Outputs and Multi-monitors
+    bindsym $mod+Mod1+$left focus output left
+    bindsym $mod+Mod1+Shift+$left move container to output left, focus output left
+    bindsym $mod+Mod1+$right focus output right
+    bindsym $mod+Mod1+Shift+$right move container to output right, focus output right
+    bindsym $mod+Mod1+$up focus output up
+    bindsym $mod+Mod1+Shift+$up move container to output up, focus output up
+    bindsym $mod+Mod1+$down focus output down
+    bindsym $mod+Mod1+Shift+$down move container to output down, focus output down
+
+    bindsym $mod+Mod1+Left focus output left
+    bindsym $mod+Mod1+Shift+Left move container to output left, focus output left
+    bindsym $mod+Mod1+Right focus output right
+    bindsym $mod+Mod1+Shift+Right move container to output right, focus output right
+    bindsym $mod+Mod1+Up focus output up
+    bindsym $mod+Mod1+Shift+Up move container to output up, focus output up
+    bindsym $mod+Mod1+Down focus output down
+    bindsym $mod+Mod1+Shift+Down move container to output down, focus output down
 #
 # Workspaces:
 #
@@ -165,14 +217,27 @@ input * {
     # We just use 1-10 as the default.
 
     bindsym $mod+Prior exec /home/nml/.local/bin/sway-workspace-extras prev
-    bindsym $mod+Comma exec /home/nml/.local/bin/sway-workspace-extras prev
+    bindsym $mod+Comma workspace prev_on_output
+    bindsym $mod+bracketleft exec /home/nml/.local/bin/sway-workspace-extras prev
+    bindsym $mod+Shift+bracketleft exec /home/nml/.local/bin/sway-workspace-extras move-prev
+    bindsym $mod+KP_Prior workspace prev
     bindsym $mod+Next exec /home/nml/.local/bin/sway-workspace-extras next
-    bindsym $mod+Period exec /home/nml/.local/bin/sway-workspace-extras next
+    bindsym $mod+Period workspace next_on_output
+    bindsym $mod+bracketright exec /home/nml/.local/bin/sway-workspace-extras next
+    bindsym $mod+Shift+bracketright exec /home/nml/.local/bin/sway-workspace-extras move-next
+    bindsym $mod+KP_Next workspace next
     bindsym $mod+Shift+Prior exec /home/nml/.local/bin/sway-workspace-extras move-prev
-    bindsym $mod+Shift+Comma exec /home/nml/.local/bin/sway-workspace-extras move-prev
+    bindsym $mod+Shift+Comma move window to workspace prev_on_output, workspace prev_on_output
+    #bindsym $mod+Shift+Comma move window to workspace prev, workspace prev
     bindsym $mod+Shift+Next exec /home/nml/.local/bin/sway-workspace-extras move-next
-    bindsym $mod+Shift+Period exec /home/nml/.local/bin/sway-workspace-extras move-next
+    bindsym $mod+Shift+Period move window to workspace next_on_output, workspace next_on_output
+    #bindsym $mod+Shift+Period move window to workspace next, workspace next
     bindsym $mod+Shift+n exec /home/nml/.local/bin/sway-workspace-extras shift
+
+# Gestures
+	
+bindgesture swipe:right workspace prev
+bindgesture swipe:left workspace next
 
 workspace_auto_back_and_forth yes
 
@@ -180,7 +245,10 @@ workspace_auto_back_and_forth yes
 # Layout stuff:
 #
 
-	default_border pixel 1
+	default_border pixel 2
+	titlebar_padding 4
+	titlebar_border_thickness 0
+	title_align center
 
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
@@ -200,10 +268,11 @@ workspace_auto_back_and_forth yes
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    #bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+    bindsym $mod+z focus child
 
 # When a fullscreen window is active, inhibit idle.
 for_window [class=".*"] inhibit_idle fullscreen
@@ -228,15 +297,15 @@ focus_wrapping no
 ## Screenshots
 #
 
-    bindsym Print exec grimshot savecopy area
-    bindsym $mod+Print exec grimshot savecopy output
-    bindsym $mod+Mod1+Print exec grimshot savecopy active
-    bindsym $mod+Shift+Print exec grimshot savecopy anything
+    bindsym Print exec grimshot --notify savecopy area
+    bindsym $mod+Print exec grimshot --notify savecopy output
+    bindsym $mod+Mod1+Print exec grimshot --notify savecopy active
+    bindsym $mod+Shift+Print exec grimshot --notify savecopy anything
 
 #
 # Resizing containers:
 #
-mode "resize" {
+mode "󰩨" {
     # left will shrink the containers width
     # right will grow the containers width
     # up will shrink the containers height
@@ -256,73 +325,20 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "󰩨"
 
 #
 ### Colors
 #
-# Retro
-# set $dark      #01204E
-# set $focus     #028391
-# set $bright    #F6DCAC
-# set $urgent    #F85525
-# set $highlight #FAA968
 
-# Chocolate & Mint
-# set $dark      #59322B
-# set $focus     #4DA394
-# set $bright    #FFFCC7
-# set $urgent    #D54751
-# set $highlight #EF9A48
-
-# Unnamed soft
-# set $dark      #007096
-# set $focus     #2ABA9E
-# set $bright    #FBD0A6
-# set $urgent    #B11016
-# set $highlight #F37022
-
-# The Machine
-# set $dark      #2E3440
-# set $focus     #5E81AC
-# set $bright    #D8DEE9
-# set $urgent    #BF616A
-# set $highlight #EBCB8B
-
-# High contrast
-# set $dark      #1E1E2E
-# set $focus     #1D4ED8
-# set $bright    #F5F5F5
-# set $urgent    #DC2626
-# set $highlight #FACC15
-
-# Feels like the nineties (bright)
-# set $dark      #1E1E2E
-# set $focus     #2563EB
-# set $bright    #E5E7EB
-# set $urgent    #DC2626
-# set $highlight #FACC15
-
-# Feels like the nineties
-#set $dark      #1E1E2E
-#set $focus     #2A42B7
-#set $bright    #E5E7EB
-#set $urgent    #DC2626
-#set $highlight #FACC15
-
-# Yaru Dark
-set $dark      #333333
-set $focus     #ED764D
-set $bright    #FFFFFF
-set $urgent    #DC2626
-set $highlight #7E5273
+include ~/.config/sway/current_theme
 
 # class                  border  background text    indicator  child_border
-client.focused           $focus  $focus     $bright $highlight $focus
-client.unfocused         $dark   $dark      $bright $dark      $dark
-client.focused_inactive  $dark   $dark      $bright $dark      $dark
-client.focused_tab_title $focus  $dark      $bright
-client.urgent            $urgent $urgent    $dark   $urgent
+client.focused           $focus  $focus     $text  $highlight $focus
+client.unfocused         $dark   $dark      $bright $highlight $dark
+client.focused_inactive  $dark   $dark      $bright $highlight $dark
+client.focused_tab_title $focus  $focus     $text 
+client.urgent            $urgent $urgent    $bright $urgent
 
 #
 # Status Bar:

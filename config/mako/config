@@ -1,24 +1,25 @@
-on-notify=exec mpv /usr/share/sounds/Yaru/stereo/message.oga
-width=300
-height=210
-font=Ubuntu 11
-background-color=#FAFAFA
-text-color=#111111
-padding=14
-border-color=#B7B7B7
+on-notify=exec paplay /home/nml/.local/share/sounds/elementary/stereo/bell.wav
+include=/home/nml/.config/mako/themes/current_theme
+width=320
+height=100
+font=Inter 10
+padding=10
 border-size=1
 border-radius=2
 default-timeout=7000
-max-icon-size=64
+max-icon-size=48
 
 [app-name="grimshot"]
 ignore-timeout=1
-on-notify=exec mpv --no-config --terminal=no /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
+on-notify=exec paplay /usr/share/sounds/freedesktop/stereo/camera-shutter.oga
 on-button-left=exec makoctl list -j | jq --argjson TARGET_ID "$id" '.[] | select(.id==$TARGET_ID) | .app_icon' | xargs imv-wayland
 
 [app-name="Signal"]
-on-notify=exec mpv --no-config --terminal=no /usr/share/sounds/Yaru/stereo/message.oga
+on-notify=exec paplay /usr/share/sounds/Yaru/stereo/message.oga
 
 [app-name="Telegram"]
-on-notify=exec mpv --no-config --terminal=no /usr/share/sounds/Yaru/stereo/message.oga
+on-notify=exec paplay /usr/share/sounds/Yaru/stereo/message.oga
 
+[desktop-entry="org.jeffvli.feishin"]
+on-notify=none
+group-by=desktop-entry

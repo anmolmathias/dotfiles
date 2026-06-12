@@ -1,0 +1,8 @@
+set $dark      #d4d4d4
+set $focus     #cd9ef7
+set $bright    #1a1a1a
+set $urgent    #c6262e
+set $highlight #f9c440
+set $black     #ffffff
+set $text      #160038
+

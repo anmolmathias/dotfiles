@@ -1,0 +1,23 @@
+font = PragmataPro
+anchor = bottom
+font-size = 20
+prompt-text = " 󰈞 : "
+min-input-width = 120
+padding-bottom = 0
+padding-right = 0
+text-color = #CECECE
+input-color = #cd974b
+selection-color = #cd974b
+prompt-color = #cd974b
+
+width = 100%
+height = 100%
+border-width = 0
+outline-width = 0
+padding-left = 35%
+padding-top = 35%
+result-spacing = 25
+num-results = 5
+background-color = #000A
+
+output = "HDMI-A-1"
