@@ -234,6 +234,12 @@ input type:keyboard xkb_numlock enabled
     #bindsym $mod+Shift+Period move window to workspace next, workspace next
     bindsym $mod+Shift+n exec /home/nml/.local/bin/sway-workspace-extras shift
 
+    #mouse bindings
+    bindsym --whole-window {
+	$mod+button5 workspace prev_on_output
+	$mod+button4 workspace next_on_output
+}
+
 # Gestures
 	
 bindgesture swipe:right workspace prev
