@@ -286,6 +286,9 @@ for_window [class=".*"] inhibit_idle fullscreen
 # Don't wrap around screen when focusing.
 focus_wrapping no
 
+# Hide borders if the only screen on output.
+hide_edge_borders smart
+
 #
 # Scratchpad:
 #
