@@ -23,3 +23,7 @@ on-notify=exec paplay /usr/share/sounds/Yaru/stereo/message.oga
 [desktop-entry="org.jeffvli.feishin"]
 on-notify=none
 group-by=desktop-entry
+
+[app-name="wpctl"]
+on-notify=none
+group-by=app-name
