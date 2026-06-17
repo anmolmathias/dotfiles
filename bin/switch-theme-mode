@@ -1,0 +1,42 @@
+#!/bin/bash
+
+THEME_LIGHT="Yaru-blue"
+THEME_DARK="Yaru-blue-dark"
+ICON_LIGHT="Yaru-blue"
+ICON_DARK="Yaru-blue-dark"
+
+temp=$(gsettings get org.gnome.desktop.interface gtk-theme)
+
+CURRENT_THEME=$(echo "$temp" | tr -d "'")
+
+if [ "$CURRENT_THEME" = "$THEME_LIGHT" ]
+then
+	COLOR_MODE="Dark"
+	CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/foot/foot.ini"
+	ln -sf ~/.vim/colors/set_dark ~/.vim/colors/set_theme
+	ln -sf ~/.config/mako/themes/dark ~/.config/mako/themes/current_theme
+	ln -sf ~/.config/foot/dark ~/.config/foot/current_theme
+	ln -sf ~/.config/sway/dark ~/.config/sway/current_theme
+	vim --cmd ":source ~/.vimrc"
+	pkill -u "$USER" --signal=SIGUSR2 ^foot$
+	vicinae theme set custom-elementary-dark
+	gsettings set org.gnome.desktop.interface gtk-theme $THEME_DARK
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	gsettings set org.gnome.desktop.interface icon-theme $ICON_DARK
+else
+	COLOR_MODE="Light"
+	CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/foot/foot.ini"
+	ln -sf ~/.vim/colors/set_light ~/.vim/colors/set_theme
+	ln -sf ~/.config/mako/themes/light ~/.config/mako/themes/current_theme
+	ln -sf ~/.config/foot/light ~/.config/foot/current_theme
+	ln -sf ~/.config/sway/light ~/.config/sway/current_theme
+	vim --cmd ":source ~/.vimrc"
+	pkill -u "$USER" --signal=SIGUSR1 ^foot$
+	vicinae theme set custom-elementary-light
+	gsettings set org.gnome.desktop.interface gtk-theme $THEME_LIGHT
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+	gsettings set org.gnome.desktop.interface icon-theme $ICON_LIGHT
+fi
+ 	swaymsg reload	
+	makoctl reload
+	notify-send "        $COLOR_MODE mode enabled"
