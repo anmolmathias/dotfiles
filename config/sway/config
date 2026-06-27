@@ -242,6 +242,7 @@ input type:keyboard xkb_numlock enabled
     bindsym --whole-window {
 	$mod+button5 workspace prev_on_output
 	$mod+button4 workspace next_on_output
+	$mod+BTN_MIDDLE kill
 }
 
 # Gestures
