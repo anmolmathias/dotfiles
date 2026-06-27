@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": ["sway/workspaces","wlr/taskbar"],
     "modules-center": [],
-    "modules-right": ["mpris", "sway/mode", "network", "bluetooth", "pulseaudio", "idle_inhibitor", "custom/theme-mode", "battery", "custom/clock"],
+    "modules-right": ["mpris", "sway/mode", "network", "bluetooth", "pulseaudio", "idle_inhibitor", "custom/theme-mode", "battery", "clock"],
 
     "sway/workspaces": {
         "disable-scroll": false,
@@ -15,7 +15,7 @@
 "wlr/taskbar": {
 	"format": "{icon}  {title:.30}",
 	"icon-size": 14,
-	"icon-theme": "Yaru-yellow",
+	"icon-theme": "Yaru-blue",
 	"tooltip-format": "{title}",
 	"on-click": "minimize-raise",
 	"on-click-middle": "close"
@@ -24,7 +24,7 @@
 
 
 "mpris": {
-        "format": "<span color='#a56de2'>{player_icon}</span>  {artist} - {title}",
+        "format": "<span size='x-large' rise='-1200' color='#a56de2'>{player_icon}</span> {artist} - {title}",
         "format-paused": "{status_icon} {artist} - {title}",
         "max-length": 80,
         "player-icons": {
@@ -44,10 +44,23 @@
     "sway/mode": {
         "format": "  "
     },
-    "custom/clock": {
-        "format": "{}",
-        "exec": "date +'%H:%M'",
-        "interval": 3
+    "clock": {
+        "format": "{:%a %b %d  %H:%M}",
+	"tooltip": true,
+	"tooltip-format": "<tt><small><span size='10pt' font='PragmataPro'>{calendar}</span></small></tt>",
+	"calendar": {
+		"mode": "month",
+		"format": {
+                	"months": "<span color='#f4679d'><b>{}</b></span>",
+                        "days": "<span color='#fafafa'><b>{}</b></span>",
+                	"weekdays": "<span color='#9bdb4d'><b>{}</b></span>",
+                	"today": "<span color='#f9c440'><b>{}</b></span>"
+            	}
+	},
+	"actions": {
+		"on-scroll-up": "shift_up",
+		"on-scroll-down": "shift_down"
+	}
     },
 
     "sway/window": {
@@ -59,9 +72,9 @@
 
  "network": {
         "format": "",
-        "format-ethernet": "󰈀 ",
-        "format-wifi": "󰖩 ",
-        "format-disconnected": "󱚼 ",
+        "format-ethernet": "󰈀",
+        "format-wifi": "󰖩",
+        "format-disconnected": "󱚼",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ifname}",
         "tooltip-format-disconnected": "Disconnected",
@@ -70,12 +83,12 @@
 
     "pulseaudio": {
         "format": "{icon}",
-	"format-muted": " ",
+	"format-muted": "",
 	"format-icons": {
-		"headphone": " ",
-		"headset": " ",
-		"hifi": "󰓃 ",
-		"default": [" ", " ", " "]
+		"headphone": "",
+		"headset": "",
+		"hifi": "󰓃",
+		"default": ["", "", ""]
 	},
 	"on-click": "foot pulsemixer",
 	"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -89,21 +102,21 @@
 "bluetooth": {
 	"format": "󰂯",
 	"format-disabled": "󰂲",
-	"format-connected": " ",
+	"format-connected": "",
 	"on-click": "blueman-manager"
 },
 
 "idle_inhibitor": {
 	"format": "{icon}",
 	"format-icons": {
-		"activated": " ",
-		"deactivated": " "
+		"activated": "",
+		"deactivated": ""
 	},
 	"timeout": 180
 },
 
 "custom/theme-mode": {
-	"format": " ",
+	"format": "",
 	"tooltip": false,
 	"on-click": "bash /home/nml/.local/bin/switch-theme-mode"
 },

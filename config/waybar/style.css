@@ -8,7 +8,7 @@
 	border-radius: 0;
 }
 #mpris {
-	margin-right: 30px;
+	margin-right: 25px;
 	color: @fg;
 	font-size: 11px;
 	font-weight: bold;
@@ -41,20 +41,19 @@ tooltip label {
 	padding: 2px 2px;
 }
 
-#idle_inhibitor,
-#language,
-#pulseaudio,
-#battery,
-#backlight,
-#window,
 #network,
 #bluetooth,
+#pulseaudio,
+#idle_inhibitor,
 #custom-theme-mode,
-#custom-clock {
+#battery,
+#backlight,
+#window {
 	color: @fg;
-	margin: 0px 4px;
+	margin: 0px 5px;
 	font-size: 12px;
 }
+
 
 #taskbar {
 	font-size: 11px;
@@ -76,22 +75,23 @@ tooltip label {
 
 }
 
-#custom-clock {
+#clock {
+	color: @fg;
 	font-size: 11px;
 	font-weight: bold;
-	margin-right: 6px;
+	margin: 6px;
 }
 
 #workspaces {
-	font-size: 8px;
+	font-size: 9px;
 	padding: 7px;
+	font-weight: bold;
 }
 
 #workspaces button {
 	color: @fg;
 	border: none;
 	padding: 0px 0px;
-	font-weight: bold;
 	margin-right: 2px;
 	
 }
@@ -101,7 +101,6 @@ tooltip label {
 	color: #381f00;
 	border: none;
 	background: #f9c440;
-	font-weight: bold;
 }
 
 #workspaces button.focused:hover {
@@ -109,7 +108,6 @@ tooltip label {
 	color: #381f00;
 	border: none;
 	background: #f9c440;
-	font-weight: bold;
 }
 
 #workspaces button:hover {
@@ -117,7 +115,6 @@ tooltip label {
 	color: #ffffff;
 	border: none;
 	background: RGBA(239, 239, 242, 0.1);
-	font-weight: bold;
 }
 
 #workspaces button.urgent {
@@ -125,7 +122,6 @@ tooltip label {
 	border: none;
 	background: #c6262e;
 	color: #330000;
-	font-weight:bold;
 }
 
 #tray {
