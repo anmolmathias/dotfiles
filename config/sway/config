@@ -97,6 +97,9 @@ input type:keyboard xkb_numlock enabled
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    # Dismiss notifications
+    bindsym $mod+x exec makoctl dismiss --all
+
     # copy manager
     #bindsym $mod+u exec $term -e bash -c 'cliphist list | fzf --no-sort | cliphist decode | wl-copy'
     bindsym $mod+c exec $clipboard
