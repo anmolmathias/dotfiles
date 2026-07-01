@@ -2,3 +2,12 @@ background-color=#FAFAFA
 border-color=#B7B7B7
 text-color=#111111
 
+[urgency=critical]
+background-color=#ed5353 
+border-color=#c6262e
+text-color=#330000 
+
+[urgency=low]
+background-color=#ffa154
+border-color=#f37329
+text-color=#4d0f00
