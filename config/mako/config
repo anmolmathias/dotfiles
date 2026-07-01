@@ -8,6 +8,7 @@ border-size=1
 border-radius=2
 default-timeout=7000
 max-icon-size=48
+outer-margin=15,10
 
 [app-name="grimshot"]
 ignore-timeout=1
