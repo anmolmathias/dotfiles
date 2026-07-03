@@ -122,6 +122,9 @@ input type:keyboard xkb_numlock enabled
 # Application Shortcuts
 #
 
+# Windows
+#	bindsym $mod+Tab exec swaymsg -t get_tree | jq ".. | objects | select(.foreign_toplevel_identifier==\"$(windows -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused).name'))\") | .id" | xargs -I? swaymsg [con_id=?] focus
+	bindsym $mod+Tab exec expose-windows
 
 # Switch-theme-mode
 	bindsym $mod+Shift+a exec switch-theme-mode
@@ -234,7 +237,7 @@ input type:keyboard xkb_numlock enabled
     bindsym $mod+Shift+Period move window to workspace next_on_output, workspace next_on_output
     #bindsym $mod+Shift+Period move window to workspace next, workspace next
     bindsym $mod+n exec /home/nml/.local/bin/sway-workspace-extras shift
-    bindsym $mod+Tab exec swayr next-window all-workspaces
+    bindsym $mod+Escape exec swayr next-window all-workspaces
     bindsym $mod+Shift+Tab exec swayr prev-window all-workspaces
     bindsym $mod+Space exec swayr switch-to-urgent-or-lru-window
     bindsym Mod1+Tab exec vicinae vicinae://launch/wm/switch-windows
