@@ -1,0 +1,51 @@
+directory: ~/Music
+library: ~/Music/musiclibrary.db
+import:
+  move: yes
+  write: yes
+  log: beetslog.txt
+art_filename: cover 
+plugins: musicbrainz lyrics edit info convert playlist importfeeds duplicates fetchart embedart
+duplicates:
+  keys: [title, albumartist, album, length] 
+  path: yes
+  count: yes
+fetchart:
+  minwidth: 1200
+  maxwidth: 1200
+  sources:
+      - itunes
+      - '*'
+lyrics:
+  auto: yes
+  sources: [lrclib]
+  synced: yes
+
+permissions:
+  file: 644
+  dir: 755
+importfeeds:
+  dir: ~/Music/Playlists
+  formats: m3u m3u_session
+  relative_to: ~/Music/Playlists
+playlist:
+  auto: yes
+  relative_to: ~/Music/Playlists
+  playlist_dir: ~/Desktop
+convert:
+  auto: yes
+  no_convert: format:mp3,format:opus
+  never_convert_lossy_files: yes
+  format: opus
+  formats:
+    opus:
+      command: opusenc --bitrate 160 $source $dest
+      extension: opus
+ui:
+  color: yes
+paths:
+  default: Albums/$albumartist/$album%aunique{}/$track $title
+  singleton: Singles/$artist/$title
+  comp: Compilations/$album%aunique{}/$track $title
+item_fields:
+  multidisc: 1 if disctotal > 1 else 0
