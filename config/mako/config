@@ -1,4 +1,5 @@
 on-notify=exec paplay /home/nml/.local/share/sounds/elementary/stereo/bell.wav
+on-notify=exec pkill -RTMIN+8 waybar
 include=/home/nml/.config/mako/themes/current_theme
 width=320
 height=100
@@ -28,3 +29,6 @@ group-by=desktop-entry
 [app-name="wpctl"]
 on-notify=none
 group-by=app-name
+
+[mode=do-not-disturb]
+invisible=1

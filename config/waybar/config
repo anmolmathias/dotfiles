@@ -1,11 +1,11 @@
 {
     "layer": "bottom",
-    "position": "bottom",
+    "position": "top",
     "height": 30,
     "spacing": 0,
     "modules-left": ["sway/workspaces","wlr/taskbar"],
     "modules-center": [],
-    "modules-right": ["mpris", "sway/mode", "network", "bluetooth", "pulseaudio", "idle_inhibitor", "custom/theme-mode", "battery", "clock"],
+    "modules-right": ["mpris", "sway/mode", "network", "bluetooth", "idle_inhibitor", "custom/theme-mode", "pulseaudio", "battery", "custom/mako", "clock"],
 
     "sway/workspaces": {
         "disable-scroll": false,
@@ -15,7 +15,7 @@
 "wlr/taskbar": {
 	"format": "{icon}  {title:.30}",
 	"icon-size": 14,
-	"icon-theme": "Yaru-blue",
+	"icon-theme": "Yaru",
 	"tooltip-format": "{title}",
 	"on-click": "minimize-raise",
 	"on-click-middle": "close"
@@ -63,12 +63,6 @@
 	}
     },
 
-    "sway/window": {
-	"format": "            {}",
-	"all-outputs": true,
-	"offscreen-css": false,
-	"max-length": 70
-},
 
  "network": {
         "format": "",
@@ -83,7 +77,7 @@
 
     "pulseaudio": {
         "format": "{icon}",
-	"format-muted": "",
+	"format-muted": " ",
 	"format-icons": {
 		"headphone": "",
 		"headset": "",
@@ -92,8 +86,8 @@
 	},
 	"on-click": "foot pulsemixer",
 	"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-	"on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav",
-	"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav",
+	"on-scroll-up": "paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+	"on-scroll-down": "paplay ~/.local/share/sounds/elementary/stereo/audio-volume-change.wav && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
 	"tooltip-format": "Vol: {volume}",
 	"max-volume": "100"
     },
@@ -129,8 +123,8 @@
 		"default": 100
 	},
 	"events": {
-		"on-discharging-warning": "notify-send -u low '󰁼  Low Battery'",
-		"on-discharging-critical": "notify-send -u critical '󰂃  Battery almost empty'"
+		"on-discharging-warning": "notify-send -u low '󰁼   Low Battery'",
+		"on-discharging-critical": "notify-send -u critical '󰂃   Battery almost empty'"
 	},
         "format": "{icon}",
         "format-icons": {
@@ -140,14 +134,13 @@
         "tooltip-format": "{capacity}%"
     },
 
-    "backlight": {
-        "format": "<b>mon:</b> {percent}%",
-        "tooltip": false
-    },
-    
-    "tray": {
-        "icon-size": 20,
-        "spacing": 7,
-        "tooltip": false
-    }
+"custom/mako": {
+    "exec": "~/.config/waybar/scripts/mako.sh",
+    "return-type": "json",
+    "format": "{}",
+    "interval": 2, // Updates every 2 seconds
+    "on-click": "makoctl mode -t do-not-disturb && pkill -SIGRTMIN+8 waybar", // Added -SIGRTMIN
+    "on-click-right": "makoctl dismiss -a && pkill -SIGRTMIN+8 waybar",
+    "signal": 8
+}
 }

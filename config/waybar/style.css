@@ -48,12 +48,12 @@ tooltip label {
 #custom-theme-mode,
 #battery,
 #backlight,
+#custom-mako,
 #window {
 	color: @fg;
 	margin: 0px 5px;
 	font-size: 12px;
 }
-
 
 #taskbar {
 	font-size: 11px;
@@ -93,7 +93,7 @@ tooltip label {
 	border: none;
 	padding: 0px 0px;
 	margin-right: 2px;
-	
+	transition: color 0.2s ease;
 }
 
 #workspaces button.focused {
@@ -144,3 +144,11 @@ tooltip label {
 #battery.critical {
 	color: #c6262e;
 }
+#battery.charging.critical {
+	color: #f37329;
+}
+
+#custom-mako.unread {
+	color: #f9c440;
+}
+
