@@ -1,2 +1,11 @@
 @define-color fg #c9c9c9;
 @define-color bg #111111;
+
+#taskbar button.active {
+        background: rgba(239, 239, 242, 0.1);
+}
+
+#taskbar button:hover {
+        background: RGBA(239, 239, 242, 0.1);
+
+}
