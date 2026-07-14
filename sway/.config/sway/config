@@ -44,7 +44,7 @@ exec vicinae server
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/warty-final-ubuntu.png fill
-output * bg /home/nml/Pictures/Walls/A-Large-Body-of-Water-Surrounded-By-Mountains.jpg fill
+output * bg "/home/nml/Pictures/Walls/snow-leopard.jpg" fill
 output HDMI-A-1 resolution 1920x1080 position 0 0
 #output eDP-1 disable
 output eDP-1 resolution 1920x1080 position 1920 0

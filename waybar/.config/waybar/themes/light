@@ -1,11 +1,2 @@
-tooltip {
-        background-color: #fafafa;
-        border: solid 1px #b7b7b7;
-        border-radius: 2px;
-}
-
-tooltip label {
-        color: #111111;
-        font-size: 11px;
-        font-weight: bold;
-}
+@define-color fg #1a1a1a;
+@define-color bg #fafafa;

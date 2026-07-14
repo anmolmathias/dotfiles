@@ -1,6 +1,5 @@
+@import url("/home/nml/.config/waybar/themes/current_theme.css");
 @define-color green #9bdb4d;
-@define-color fg #c9c9c9;
-@define-color bg #111111;
 
 * {
 	min-height: 0;
@@ -17,6 +16,7 @@
 window#waybar {
 	background: @bg;
 	font-size: 16px;
+	color: @fg;
 }
 
 tooltip {
